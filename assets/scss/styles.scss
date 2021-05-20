@@ -98,6 +98,51 @@ nav {
 			display: none;
 		}
 
+		&.active {
+			position: fixed;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background: white;
+			z-index: 55;
+
+			ul {
+				list-style: none;
+
+				li {
+					display: block;
+					text-align: center;
+					font-size: 2rem;
+					padding: 1rem 0;
+					a{
+						color: initial;
+						text-decoration: none;
+
+						&:hover{
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+
+			.nav-button-close {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 1rem;
+
+				span {
+					font-size: 3rem;
+				}
+			}
+
+		}
+
 	}
 
 	.nav-button {
@@ -182,51 +227,6 @@ nav {
 
 		button:hover{
 			background-color: $button-hover-bg;
-		}
-
-	}
-
-	.menu-active {
-		position: fixed;
-		left: 0;
-		top: 0;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		background: white;
-		z-index: 55;
-
-		ul {
-			list-style: none;
-
-			li {
-				display: block;
-				text-align: center;
-				font-size: 2rem;
-				padding: 1rem 0;
-				a{
-					color: initial;
-					text-decoration: none;
-
-					&:hover{
-						text-decoration: underline;
-					}
-				}
-			}
-		}
-
-		.nav-button-close {
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			padding: 1rem;
-
-			span {
-				font-size: 3rem;
-			}
 		}
 
 	}
