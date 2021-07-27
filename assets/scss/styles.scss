@@ -27,7 +27,7 @@ body, html {
 	max-height: 100vh;
 	width: 100%;
 	height: 100%;
-	font-size: 90%;
+	font-size: 85%;
 	font-family: "Poppins", Arial, sans-serif;
 	line-height: 1.4;
 	scroll-behavior: smooth;
@@ -43,8 +43,13 @@ a:hover {
 	color: rgba(0, 0, 0, .7);
 }
 
-h1, ul, li, span {
-	margin: 0;
+h1, ul, li, span {margin: 0;}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
 }
 
 header {
@@ -84,21 +89,24 @@ nav {
 	padding: 0 1rem;
 
 	.menu {
-		ul {
-			list-style: none; 
-		}
+		ul {list-style: none; }
 
 		li {
 			display: inline-block;
-			margin-left: 1rem;
+			margin-left: 2rem;
 			font-size: 1rem;
 		}
 
-		.nav-button-close {
-			display: none;
-		}
+		.nav-button-close {display: none;}
 
-		&.active {
+	}
+
+	.nav-button {
+		display: none;
+		width: 2rem;
+	}
+
+    .menu.active {
 			position: fixed;
 			left: 0;
 			top: 0;
@@ -143,13 +151,6 @@ nav {
 
 		}
 
-	}
-
-	.nav-button {
-		display: none;
-		width: 2rem;
-	}
-
 }
 
 .wrapper{
@@ -170,17 +171,16 @@ nav {
 		width: 22rem;
 		height: 100%;
 
+		@media screen and (max-width: 720px){
+			margin-top: 1.5rem;
+		}
+
 		img {
 			height: 60%;
-			width: 100%;
-			object-position: center;
-			object-fit: cover;
 		}
 	}
 
-	.title, .menu {
-		padding: .5rem;
-	}
+	.title, .menu {padding: .5rem;}
 
 	.header-title {
 		font-weight: 800;
@@ -213,8 +213,10 @@ nav {
 
 	.button {
 		padding: 1rem 0;
+		margin-top: .8rem;	
 
-		button {
+
+		a {
 			border: 1px solid $button-border;
 			padding: 1rem 3.5rem;
 			border-radius: 1.5rem;
@@ -222,17 +224,12 @@ nav {
 			color: $button-text;
 			cursor: pointer;
 			transition: background 500ms;
-			font-size: 1rem;	
+			font-size: 1rem;
+			text-decoration: none;
 		}
 
-		button:hover{
-			background-color: $button-hover-bg;
-		}
+		a:hover{background-color: $button-hover-bg;}
 
-	}
-
-	.arrow-down {
-		display: none;
 	}
 
 	.our-services-wrapper {
@@ -241,23 +238,6 @@ nav {
 		padding: 2rem 0 4rem 0;
 		margin-top: 2rem;
 
-		.our-services-title {
-			text-align: center;
-			margin: 1rem auto;
-
-			h2 {
-				font-size: 1.8rem;
-				color: $title;
-				padding: .5rem;
-			}
-
-			hr {
-				width: 10%;
-				background-color: $title;
-				margin: 0 auto;
-			}
-		}
-
 		.grid-section {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, 1fr);
@@ -265,16 +245,12 @@ nav {
 			grid-gap: 1.5rem;
 			padding: 4rem 2rem;
 
-			@media screen and (min-width: 720px) {
-				grid-auto-flow: column;
-			}
+			@media screen and (min-width: 720px) {grid-auto-flow: column;}
 
 			.sections-content-wrapper {
 				@include flex-general-config(initial, initial);
 				box-shadow: $shadow;
 				background: white;
-				transition: transform 250ms ease-in;
-				cursor: pointer;
 
 				.citaction {
 					width: 100%;
@@ -283,13 +259,17 @@ nav {
 					border-left: 3px solid $button-border;
 				}
 
-				.icon-wrapper span {
+				.icon-wrapper {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
 					color: $button-border;
-					margin: 1rem 0;
-				}
-
-				&:hover{
-					transform: translateY(-12px);;
+					margin: 1rem auto;
+					h2{
+						margin-top: .5rem;
+						text-align: center;
+						font-size: 1rem;
+					}
 				}
 
 			}
@@ -300,6 +280,7 @@ nav {
 		width: 100%;
 		background-color: white;
 		padding: 4rem .5rem;
+		overflow: auto;
 
 		.about-us-grid-title {
 			padding: 1rem 2rem;
@@ -315,42 +296,32 @@ nav {
 		
 		.about-us-grid {
 			width: 100%;
-			display: grid;
-			grid-template-columns: repeat(auto-fill, 1fr);
-			grid-template-rows: auto;
-			grid-gap: 1.5rem;
+			display: flex;
+			gap: 1.5rem;
 			padding: 2rem 1rem;
-
-
-			@media screen and (min-width: 720px) {
-				grid-auto-flow: column;
-			}
+			overflow: auto;
 
 			.about-us-grid-item {
+				min-width: 27rem;
 				width: 100%;
 				box-shadow: $shadow;
 				border-radius: 1rem;
 				@include flex-general-config(initial, initial);
 				padding: 2rem 0;
 
-				.about-us-image {
-					width: 12rem;
-					height: 12rem;
-					border-radius: 50%;
-					box-shadow: $shadow;
+				@media screen and (max-width: 720px) {
+					width: 40%;
+				}
 
-					img {
-						width: 100%;
-						height: 100%;
-						border-radius: 50%;
-						object-fit: cover;
-					}
+				.about-us-image {
+					width: 16rem;
+					height: 20rem;
 				}
 
 				.about-us-title {
 					text-align: center;
-					padding: .5rem 0;
-					margin: 1rem 0;
+					padding: .5rem;
+					margin: 1rem;
 
 					h1 {
 						font-size: 1.5rem;
@@ -394,33 +365,32 @@ nav {
 		}
 
 		.prices-grid {
-			@include flex-general-config(initial, initial);
+			display: flex;
+			overflow: auto;
 			padding: 2rem;
 
-			@media screen and (min-width: 720px) {
-				flex-direction: initial;
-			}
-
 			.prices-card {
-				@include flex-general-config(wrap, space-between);
+				@include flex-general-config(initial, space-between);
 				margin: 1rem;
+				min-width: 27rem;
 				width: 100%;
+				height: 100%;
 				background-color: $bg-light;
 
 				.prices-card-title {
-					padding: 1rem 0;
+					max-width: 18rem;
+                    width: 100%;
+					margin: 1rem auto;
 					text-align: center;
-
-					span {
-						color: $title;
-						font-size: 2rem;
+					@media screen and (max-width: 720px){
+						max-width: 15rem;
 					}
 				}
 
 				.prices-description {
-					margin: 1rem 1.5rem;
+					margin: 0 2rem;
+					margin-bottom: 1rem;
 					text-align: justify;
-					padding-bottom: 1rem;
 				}
 
 				.prices-buy-button {
@@ -455,13 +425,15 @@ nav {
 			color: white;
 
 			.newsletter__title {
-				width: 100%;
+				width: 80%;
+				margin: 0 auto;
 				text-align: center;
 				padding: 1rem;
 				font-weight: bolder;
 
 				h1 {
 					font-size: 1.8rem;
+					text-align: center;
 				}
 			}
 
@@ -470,9 +442,10 @@ nav {
 				margin: 1rem auto;
 
 				.newsletter__subscriber{
-					width: 100%;
+					width: 75%;
 					padding: 1rem;
 					display: flex;
+					margin: 0 auto;
 					flex-direction: column;
 
 					.newsletter__input {
@@ -511,41 +484,33 @@ nav {
 		background: $title;
 
 		.footer-container {
-			margin: 0 auto;
+		    margin: 0 auto;
 			padding: 2rem;
 
 			.footer-social-icons{
-				width: 50%;
 				margin: 0 auto;
 				display: flex;
-				justify-content: space-between;
-				span {
-					font-size: 2rem;
-				}
+				justify-content: center;
+				span {font-size: 2rem;margin-left: .8rem;}
 			}
 
 			.footer-links {
 				width: 100%;
 				padding: 1rem;
+				margin: 2rem auto;
 				display: flex;
 				justify-content: center;
-				align-items: center;
-				margin-top: 2rem;
-				
+
 				ul {
-					margin: 0 auto;
 					list-style: none;
 					display: flex;
-					justify-content: space-between;
+					justify-content: center;
 					flex-wrap: wrap;
-
+					margin: 0 auto;
+				
 					li {
-						margin: 1rem 1.5rem;
+						margin: 1rem;
 						font-size: 1.1rem;
-
-						a {
-							color: initial;
-						}
 					}
 				}
 			}
@@ -588,13 +553,5 @@ nav {
 
 	.wrapper-background {
 		margin: auto;
-	}
-
-	.arrow-down {
-		display: flex;
-		width: 100%;
-		padding: 1.5rem 0;
-		justify-content: center;
-		align-items: center;
 	}
 }
