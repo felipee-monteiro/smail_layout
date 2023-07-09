@@ -19,6 +19,6 @@
     "gulp-sourcemaps": "^3.0.0"
   },
   "dependencies": {
-    "node-sass": "^7.0.3"
+    "node-sass": "^9.0.0"
   }
 }
